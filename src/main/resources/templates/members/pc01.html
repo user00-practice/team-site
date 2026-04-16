@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{fragments/layout :: layout(~{::title}, ~{::main-content})}">
+<head>
+  <title th:text="${member.pcName} + ' | チームメンバー紹介'">PCT01</title>
+</head>
+<body>
+<th:block th:fragment="main-content">
+
+  <!--
+    =====================================================
+    【参加者が作るページのサンプル】PCT01 担当
+    =====================================================
+    このファイルを自分の番号でコピーして作ります。
+    例：pc02.html / pc03.html / pc04.html ...
+
+    ★ DBから取得できる値（th:text で表示できます）
+      ${member.pcName}   → PCT01（PC名）
+      ${member.slug}     → pc01（URLスラグ）
+      ${member.tagline}  → data.sql に設定した一言紹介
+
+    ★ ページ内の自己紹介内容は自由です！
+      - 好きなセクションを追加・削除できます
+      - 絵文字・テキストを自由に変えてください
+      - このページはLAN内のみで公開されます
+
+    ★ 完成したら講師に連絡してください
+      → data.sql の page_ready を true に変更してもらいます
+      → トップページのカードが「完成」バッジに変わります！
+    =====================================================
+  -->
+
+  <!-- ヘッダー（DB から PC名を表示） -->
+  <div class="profile-header">
+    <div class="profile-avatar" th:text="${member.pcName}">PCT01</div>
+    <div class="profile-meta">
+      <h1 class="profile-name" th:text="${member.pcName}">PCT01</h1>
+      <p class="profile-tagline" th:text="${member.tagline}">一言紹介</p>
+    </div>
+    <a th:href="@{/}" class="btn-back">← 一覧へ戻る</a>
+  </div>
+
+  <!-- ここから下を自由にカスタマイズ -->
+  <div class="profile-sections">
+
+    <!-- 自己紹介 -->
+    <section class="profile-section">
+      <h2>🙋 自己紹介</h2>
+      <p>
+        はじめまして！<br>
+        ここに自己紹介を書いてください。
+      </p>
+    </section>
+
+    <!-- 好きな技術・興味のあること -->
+    <section class="profile-section">
+      <h2>💻 興味のある技術</h2>
+      <ul class="tag-list">
+        <li class="tag">Java</li>
+        <li class="tag">Spring Boot</li>
+        <li class="tag">GitHub</li>
+        <!-- タグを自由に追加・変更できます -->
+      </ul>
+    </section>
+
+    <!-- 目標 -->
+    <section class="profile-section">
+      <h2>🎯 今回の目標</h2>
+      <p>
+        GitHub を使ったチーム開発の流れを身につけること！
+      </p>
+    </section>
+
+    <!-- ひとこと -->
+    <section class="profile-section">
+      <h2>💬 ひとこと</h2>
+      <p>よろしくお願いします 🚀</p>
+    </section>
+
+  </div>
+
+</th:block>
+</body>
+</html>

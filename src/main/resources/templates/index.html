@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{fragments/layout :: layout(~{::title}, ~{::main-content})}">
+<head>
+  <title>メンバー一覧 | チームメンバー紹介</title>
+</head>
+<body>
+<th:block th:fragment="main-content">
+
+  <div class="page-header">
+    <h1 class="page-title">&#x1F465; チームメンバー一覧</h1>
+    <p class="page-subtitle">カードをクリックすると紹介ページが開きます。</p>
+  </div>
+
+  <div class="member-grid">
+    <div th:each="member : ${members}" class="member-card">
+
+      <!-- ページ完成済み：クリックで詳細へ -->
+      <a th:if="${member.pageReady}"
+         th:href="@{/members/{slug}(slug=${member.slug})}"
+         class="member-card-link">
+        <div class="avatar" th:text="${member.pcName}">PCT01</div>
+        <div class="member-info">
+          <p class="member-name"    th:text="${member.pcName}">PCT01</p>
+          <p class="member-tagline" th:text="${member.tagline}">一言紹介</p>
+          <p class="member-url"     th:text="'/members/' + ${member.slug}">/members/pc01</p>
+        </div>
+        <span class="badge badge-ready">完成</span>
+      </a>
+
+      <!-- ページ未完成：リンクなし -->
+      <div th:unless="${member.pageReady}" class="member-card-placeholder">
+        <div class="avatar avatar-wip" th:text="${member.pcName}">PCT01</div>
+        <div class="member-info">
+          <p class="member-name"    th:text="${member.pcName}">PCT01</p>
+          <p class="member-tagline wip-text">ページを作成中...</p>
+          <p class="member-url"     th:text="'/members/' + ${member.slug}">/members/pc01</p>
+        </div>
+        <span class="badge badge-wip">作成中</span>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- 進捗バー（カウントはサーバー側で計算済み） -->
+  <div class="progress-section">
+    <p class="progress-label">
+      完成ページ：
+      <strong th:text="${readyCount}">0</strong>
+      /
+      <strong th:text="${totalCount}">0</strong>
+    </p>
+    <div class="progress-bar-wrap">
+      <div class="progress-bar"
+           th:style="${totalCount > 0} ? 'width:' + (${readyCount} * 100 / ${totalCount}) + '%' : 'width:0%'">
+      </div>
+    </div>
+  </div>
+
+</th:block>
+</body>
+</html>

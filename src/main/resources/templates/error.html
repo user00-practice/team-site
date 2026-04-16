@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{fragments/layout :: layout(~{::title}, ~{::main-content})}">
+<head>
+  <title>ページ未完成 | チームメンバー紹介</title>
+</head>
+<body>
+<th:block th:fragment="main-content">
+  <div class="error-page">
+    <div class="error-icon">🚧</div>
+    <h1>このページはまだ作成されていません</h1>
+    <p>担当者がページを作成中です。<br>
+       トレーニング中に Controller と HTML を実装すると表示されます。</p>
+    <p th:if="${message}" class="error-detail" th:text="${message}"></p>
+    <a th:href="@{/}" class="btn-back">← 一覧へ戻る</a>
+  </div>
+</th:block>
+</body>
+</html>

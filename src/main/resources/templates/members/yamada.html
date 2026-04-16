@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{fragments/layout :: layout(~{::title}, ~{::main-content})}">
+<head>
+  <title th:text="${member.name} + ' | チームメンバー紹介'">山田 太郎</title>
+</head>
+<body>
+<th:block th:fragment="main-content">
+
+  <!--
+    =====================================================
+    【参加者が作るページのサンプル】
+    =====================================================
+    このファイルは「山田」さん担当の見本です。
+    各自は自分のスラグ名でファイルをコピーして作ります。
+    例：suzuki.html / sato.html / tanaka.html
+
+    ★ 自由にカスタマイズしてOKです！
+      - 好きなセクションを追加してください
+      - 色や絵文字を変えてください
+      - th:text="${member.名前}" でDBの値を表示できます
+    =====================================================
+  -->
+
+  <!-- ヘッダー：名前・GitHub ユーザー名（DBから取得） -->
+  <div class="profile-header">
+    <div class="profile-avatar" th:text="${#strings.substring(member.name, 0, 1)}">山</div>
+    <div class="profile-meta">
+      <h1 class="profile-name" th:text="${member.name}">山田 太郎</h1>
+      <p class="profile-github">
+        🐱 GitHub：
+        <a th:href="'https://github.com/' + ${member.githubUsername}"
+           th:text="'@' + ${member.githubUsername}"
+           target="_blank">@yamada-taro</a>
+      </p>
+      <p class="profile-tagline" th:text="${member.tagline}">一言紹介</p>
+    </div>
+    <a th:href="@{/}" class="btn-back">← 一覧へ戻る</a>
+  </div>
+
+  <!-- ここから下は各自が自由に編集する部分 -->
+
+  <div class="profile-sections">
+
+    <!-- 自己紹介 -->
+    <section class="profile-section">
+      <h2>🙋 自己紹介</h2>
+      <p>
+        はじめまして！山田太郎です。<br>
+        Java を勉強し始めて3ヶ月になります。
+        Spring Boot の仕組みが少しずつわかってきて楽しいです。
+      </p>
+    </section>
+
+    <!-- 好きな技術・興味のあること -->
+    <section class="profile-section">
+      <h2>💻 興味のある技術</h2>
+      <ul class="tag-list">
+        <li class="tag">Java</li>
+        <li class="tag">Spring Boot</li>
+        <li class="tag">GitHub</li>
+        <li class="tag">データベース</li>
+      </ul>
+    </section>
+
+    <!-- 目標 -->
+    <section class="profile-section">
+      <h2>🎯 目標</h2>
+      <p>
+        チームで動くWebアプリを自分の手で完成させること！<br>
+        GitHub を使いこなして、プルリクエストをスムーズに出せるようになりたいです。
+      </p>
+    </section>
+
+    <!-- ひとこと -->
+    <section class="profile-section">
+      <h2>💬 ひとこと</h2>
+      <p>よろしくお願いします！一緒に頑張りましょう 🚀</p>
+    </section>
+
+  </div>
+
+</th:block>
+</body>
+</html>

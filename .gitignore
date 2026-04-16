@@ -1,0 +1,19 @@
+# IntelliJ（個人設定は除外・チーム共有設定は残す）
+.idea/workspace.xml
+.idea/tasks.xml
+.idea/shelf/
+.idea/dictionaries/
+*.iws
+*.ipr
+out/
+
+# Maven
+target/
+
+# macOS / Windows
+.DS_Store
+Thumbs.db
+
+# ログ
+*.log
+logs/

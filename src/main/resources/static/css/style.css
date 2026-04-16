@@ -1,0 +1,215 @@
+/* ============================================================
+   チームメンバー紹介サイト スタイルシート
+   ============================================================ */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --primary:   #2563eb;
+  --primary-dark: #1d4ed8;
+  --success:   #16a34a;
+  --gray-50:   #f8fafc;
+  --gray-100:  #f1f5f9;
+  --gray-200:  #e2e8f0;
+  --gray-400:  #94a3b8;
+  --gray-600:  #475569;
+  --gray-800:  #1e293b;
+  --white:     #ffffff;
+  --radius:    10px;
+  --shadow:    0 1px 4px rgba(0,0,0,.08);
+  --shadow-md: 0 4px 12px rgba(0,0,0,.10);
+}
+
+body {
+  font-family: "Yu Gothic UI", "YuGothic", "Hiragino Kaku Gothic ProN", sans-serif;
+  background: var(--gray-50);
+  color: var(--gray-800);
+  line-height: 1.7;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+a { color: var(--primary); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* ---- Navbar ---- */
+.navbar {
+  background: var(--white);
+  border-bottom: 1px solid var(--gray-200);
+  box-shadow: var(--shadow);
+  position: sticky; top: 0; z-index: 100;
+}
+.navbar-inner {
+  max-width: 960px; margin: 0 auto;
+  padding: 0 1.5rem; height: 54px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.navbar-brand { font-size: 1.05rem; font-weight: 700; color: var(--gray-800); }
+.nav-link     { font-size: .9rem; color: var(--gray-600); }
+
+/* ---- Main / Footer ---- */
+.main-content {
+  max-width: 960px; margin: 0 auto;
+  padding: 2rem 1.5rem;
+  flex: 1;
+}
+.footer {
+  text-align: center; padding: 1.25rem;
+  font-size: .8rem; color: var(--gray-400);
+  border-top: 1px solid var(--gray-200);
+  background: var(--white);
+}
+
+/* ---- Page header ---- */
+.page-header    { margin-bottom: 1.75rem; }
+.page-title     { font-size: 1.6rem; font-weight: 700; margin-bottom: .3rem; }
+.page-subtitle  { font-size: .9rem; color: var(--gray-600); }
+
+/* ---- Member grid ---- */
+.member-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1.1rem;
+  margin-bottom: 2rem;
+}
+
+/* ---- Member card shared ---- */
+.member-card { position: relative; }
+
+.member-card-link,
+.member-card-placeholder {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.1rem 1.25rem;
+  background: var(--white);
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  text-decoration: none;
+  color: inherit;
+  transition: box-shadow .18s, transform .18s;
+}
+.member-card-link:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+  text-decoration: none;
+}
+
+.avatar {
+  width: 52px; height: 52px; border-radius: 50%;
+  background: var(--primary);
+  color: var(--white);
+  font-size: .75rem; font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.avatar-wip { background: var(--gray-400); }
+
+.member-info  { flex: 1; min-width: 0; }
+.member-name  { font-weight: 700; font-size: .95rem; }
+.member-github{ font-size: .78rem; color: var(--gray-600); margin-top: .15rem; display: flex; align-items: center; gap: .25rem; }
+.github-icon  { font-size: .85rem; }
+.member-tagline { font-size: .8rem; color: var(--gray-600); margin-top: .25rem;
+                  overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.wip-text       { color: var(--gray-400); font-style: italic; }
+
+/* ---- Badges ---- */
+.badge {
+  font-size: .7rem; font-weight: 700; padding: .2rem .55rem;
+  border-radius: 999px; white-space: nowrap; flex-shrink: 0;
+  position: absolute; top: .6rem; right: .6rem;
+}
+.badge-ready { background: #dcfce7; color: #15803d; }
+.badge-wip   { background: var(--gray-100); color: var(--gray-400); }
+
+/* ---- Progress ---- */
+.progress-section  { margin-top: 1rem; }
+.progress-label    { font-size: .875rem; color: var(--gray-600); margin-bottom: .4rem; }
+.progress-bar-wrap {
+  height: 8px; background: var(--gray-200);
+  border-radius: 999px; overflow: hidden;
+}
+.progress-bar {
+  height: 100%; background: var(--success);
+  border-radius: 999px;
+  transition: width .4s ease;
+}
+
+/* ---- Profile page ---- */
+.profile-header {
+  display: flex; align-items: flex-start; gap: 1.5rem; flex-wrap: wrap;
+  background: var(--white);
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 1.75rem;
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+.profile-avatar {
+  width: 80px; height: 80px; border-radius: 50%;
+  background: var(--primary);
+  color: var(--white);
+  font-size: 1rem; font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.profile-meta    { flex: 1; }
+.profile-name    { font-size: 1.6rem; font-weight: 700; margin-bottom: .3rem; }
+.profile-github  { font-size: .9rem; color: var(--gray-600); margin-bottom: .25rem; }
+.profile-tagline { font-size: .95rem; color: var(--gray-600); }
+
+.btn-back {
+  font-size: .85rem; color: var(--gray-600);
+  border: 1px solid var(--gray-200);
+  padding: .35rem .85rem; border-radius: var(--radius);
+  background: var(--white);
+  white-space: nowrap; align-self: flex-start;
+}
+.btn-back:hover { background: var(--gray-100); text-decoration: none; }
+
+/* ---- Profile sections ---- */
+.profile-sections { display: flex; flex-direction: column; gap: 1.1rem; }
+
+.profile-section {
+  background: var(--white);
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 1.5rem;
+}
+.profile-section h2 {
+  font-size: 1.1rem; font-weight: 700;
+  margin-bottom: .75rem;
+  padding-bottom: .5rem;
+  border-bottom: 2px solid var(--gray-200);
+}
+.profile-section p  { font-size: .95rem; line-height: 1.8; }
+.profile-section ul { padding-left: 1.2rem; }
+.profile-section li { font-size: .95rem; margin-bottom: .3rem; }
+
+/* ---- Tag list ---- */
+.tag-list { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: .5rem; }
+.tag {
+  background: #eff6ff; color: var(--primary);
+  border: 1px solid #bfdbfe;
+  padding: .25rem .75rem; border-radius: 999px;
+  font-size: .85rem; font-weight: 600;
+}
+
+/* ---- Error page ---- */
+.error-page {
+  text-align: center; padding: 4rem 1rem;
+  display: flex; flex-direction: column; align-items: center; gap: 1rem;
+}
+.error-icon { font-size: 3rem; }
+.error-page h1 { font-size: 1.4rem; }
+.error-page p  { color: var(--gray-600); }
+
+/* PC名・URL表示 */
+.member-url { font-size: .75rem; color: var(--gray-400); font-family: monospace; margin-top: .2rem; }
+
+/* エラーページ詳細メッセージ */
+.error-detail { font-size: .8rem; color: var(--gray-400); font-family: monospace; margin-top: .5rem; }
