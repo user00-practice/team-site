@@ -10,7 +10,7 @@
 -- =====================================================
 
 INSERT INTO member (pc_name, slug, tagline, page_ready) VALUES
-  ('PCT01', 'pc01', 'よろしくお願いします！', false),
+  ('PCT01', 'pc01', '池田です！', false),
   ('PCT02', 'pc02', 'よろしくお願いします！', false),
   ('PCT03', 'pc03', 'よろしくお願いします！', false),
   ('PCT04', 'pc04', 'よろしくお願いします！', false),
